@@ -27,7 +27,7 @@ function outvar = eulerFallObj()
     end
     %plot(tplot,exactplot,'blue');
     %plot(tplot,uplot,'.');
-    plotyy(tplot,uplot,tplot,exactplot);
+    plot(tplot,uplot,tplot,exactplot);
     xlabel('time');
     ylabel('position');
 

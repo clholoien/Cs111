@@ -15,7 +15,7 @@ function outvar = rk2FallObj()
         if(t+dt>tfinal)
             dt=tfinal-t;
         end
-        u=u+dt*(g-cd/m*u*u)+dt*dt/2*(-cd/m*(2*u*(g-cd/m*u*u)));
+        u=
         exact=sqrt(g*m/cd)*tanh(sqrt(g*cd/m)*t);
         if(abs(u-exact)>error)
             error=abs(u-exact);
