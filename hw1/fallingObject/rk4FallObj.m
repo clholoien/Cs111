@@ -1,4 +1,5 @@
 function outvar = rk2FallObj()
+    format long
     t=0;
     tfinal=15;
     u=0;
@@ -30,3 +31,4 @@ function outvar = rk2FallObj()
     plot(tplot,uplot,tplot,exactplot);
     xlabel('time');
     ylabel('position');
+    error

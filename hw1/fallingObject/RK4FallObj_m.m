@@ -1,10 +1,10 @@
-function outvar = rk2FallObj()
+function outvar = RK4FallObj_()
     format long
     t=0;
     tfinal=15;
     u=0;
     exact=0;
-    dt=.3;
+    dt=.075;
     g=9.81;
     cd=.25;
     m=75;
@@ -16,12 +16,16 @@ function outvar = rk2FallObj()
         if(t+dt>tfinal)
             dt=tfinal-t;
         end
-        u=u+dt*(g-cd/m*u*u)+dt*dt/2*(-cd/m*(2*u*(g-cd/m*u*u)));
+        k1=dt*rhs(g,cd,m,u);
+        k2=dt*rhs(g,cd,m,u+k1/2);
+        k3=dt*rhs(g,cd,m,u+k2/2);
+        k4=dt*rhs(g,cd,m,u+k3);
+        u=u+k1/6.+k2/3+k3/3+k4/6;
+        t=t+dt;
         exact=sqrt(g*m/cd)*tanh(sqrt(g*cd/m)*t);
         if(abs(u-exact)>error)
             error=abs(u-exact);
         end
-        t=t+dt;
         exactplot = [exactplot exact]; 
         uplot = [uplot u];
         tplot = [tplot t];
@@ -31,4 +35,7 @@ function outvar = rk2FallObj()
     plot(tplot,uplot,tplot,exactplot);
     xlabel('time');
     ylabel('position');
-    error
+    error=max(abs(uplot-exactplot))
+
+    
+  
