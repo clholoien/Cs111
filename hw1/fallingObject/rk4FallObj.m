@@ -1,5 +1,9 @@
+<<<<<<< Updated upstream
 function outvar = rk2FallObj()
     format long
+=======
+function outvar = rk4FallObj()
+>>>>>>> Stashed changes
     t=0;
     tfinal=15;
     u=0;
